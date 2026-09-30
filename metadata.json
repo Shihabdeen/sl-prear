@@ -1,0 +1,6 @@
+{
+  "name": "SL Prayer",
+  "description": "Sri Lanka Muslim prayer tracker with Hatton and Bogawantalawa Mosque portal, WorkManager background prayer notifications, Qibla compass, local mosque events, full Quran recitation, and verified admin broadcasts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

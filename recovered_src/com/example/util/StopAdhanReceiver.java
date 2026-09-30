@@ -1,0 +1,27 @@
+package com.example.util;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+import androidx.compose.runtime.internal.StabilityInferred;
+import com.example.BuildConfig;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+/* compiled from: StopAdhanReceiver.kt */
+@StabilityInferred(parameters = 0)
+@Metadata(d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\b\u0007\u0018\u00002\u00020\u0001B\u0007¢\u0006\u0004\b\u0002\u0010\u0003J\u0018\u0010\u0004\u001a\u00020\u00052\u0006\u0010\u0006\u001a\u00020\u00072\u0006\u0010\b\u001a\u00020\tH\u0016¨\u0006\n"}, d2 = {"Lcom/example/util/StopAdhanReceiver;", "Landroid/content/BroadcastReceiver;", "<init>", "()V", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "app"}, k = 1, mv = {BuildConfig.VERSION_CODE, BuildConfig.VERSION_CODE, 0}, xi = 48)
+/* loaded from: /app/applet/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/util/StopAdhanReceiver.dex */
+public final class StopAdhanReceiver extends BroadcastReceiver {
+    public static final int $stable = 8;
+
+    @Override // android.content.BroadcastReceiver
+    public void onReceive(@NotNull Context context, @NotNull Intent intent) {
+        Intrinsics.checkNotNullParameter(context, "context");
+        Intrinsics.checkNotNullParameter(intent, "intent");
+        Log.i("StopAdhanReceiver", "Received request to stop Makkah Azan alarm");
+        MakkahAdhanPlayer.INSTANCE.stopAdhan();
+    }
+}

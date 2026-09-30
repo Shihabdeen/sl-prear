@@ -1,0 +1,45 @@
+package com.example.data.local
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+@Database(
+    entities = [
+        PrayerLogEntity::class,
+        MosqueReminderEntity::class,
+        QuranBookmarkEntity::class,
+        UserPreferenceEntity::class,
+        UserEntity::class,
+        ChatMessageEntity::class
+    ],
+    version = 2,
+    exportSchema = false
+)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun prayerLogDao(): PrayerLogDao
+    abstract fun mosqueReminderDao(): MosqueReminderDao
+    abstract fun quranBookmarkDao(): QuranBookmarkDao
+    abstract fun userPreferenceDao(): UserPreferenceDao
+    abstract fun userDao(): UserDao
+    abstract fun chatMessageDao(): ChatMessageDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "sl_prayer_tracker.db"
+                ).fallbackToDestructiveMigration()
+                 .build()
+                INSTANCE = instance
+                instance
+            }
+        }
+    }
+}
